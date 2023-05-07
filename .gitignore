@@ -1,0 +1,4 @@
+node_modules/
+.env
+to-do-list.txt
+seeds/

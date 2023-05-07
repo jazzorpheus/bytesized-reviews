@@ -1,0 +1,95 @@
+<!-- Tells ejs-mate to put the following EJS/HTML into the 'body' of our boilerplate.ejs file -->
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/starability.css">
+
+<div class="row mb-3">
+    <div class="col-lg">
+        <h3 class="review-heading display-6">
+            <b>"<%= review.heading %>"</b>
+        </h3>
+    </div>
+</div>
+
+<!-- Book Image & Review Text -->
+<div class="row mb-3 d-flex align-items-start">
+    <!-- Book Image -->
+    <div class="col-xl-6 d-flex justify-content-center">
+        <img class="showImage img-fluid m-5" src="<%= review.image.url %> " alt="image of book" crossorigin="anonymous">
+    </div>
+    <!-- Review Text -->
+    <div class="col-xl-6">
+        <h3 class="review-title text-muted display-6 mb-3">
+            A Review of <i>
+                <%=review.title%>
+            </i>
+        </h3>
+
+        <p class="starability-result" data-rating="<%=review.rating%>"></p>
+
+        <p>
+            <%= review.text %>
+        </p>
+        <div class="d-flex justify-content-end">
+            <figcaption class="blockquote-footer">
+                Review by
+                <a class="userLink text-decoration-none" href="/reviews/user/<%=review.user._id%>">
+                    <i><b><%=review.user.username%></b></i>
+                </a>
+            </figcaption>
+        </div>
+        <% if (currentUser && review.user.equals(currentUser._id)) { %>
+        <a class="btn btn-edit" href="/reviews/<%=review._id%>/edit">Edit</a>
+        <form class="d-inline ms-2" action="/reviews/<%=review._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-delete text-light">Delete Review</button>
+        </form>
+        <% } %>
+    </div>
+</div>
+
+<!-- Comments Form & Posted Comments -->
+<div class="row mb-3 d-flex flex-wrap justify-content-start align-items-start">
+    <!-- Comments Form -->
+    <div class="col-xl-6">
+        <% if (currentUser) { %>
+        <h3>Add a Comment</h3>
+        <form class="needs-validation mb-3" action="/reviews/<%=review._id%>/comments" method="POST" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="text"></label>
+                <textarea class="form-control" name="comment[text]" id="text" cols="30" rows="3"
+                    placeholder="Share your thoughts on this review" maxlength="1000" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <button class="btn btn-login text-light">Submit</button>
+        </form>
+        <% } else { %>
+        <h3 class="mb-4">
+            <a href="/login">Log in</a>
+            to add a comment
+        </h3>
+        <% } %>
+
+        <!-- Display all posted comments -->
+        <% for (let comment of review.comments ) { %>
+        <div class="commentCard card mb-3">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Comment by
+                    <a class="userLink" href="/reviews/user/<%=comment.user._id%>">
+                        <i><%= comment.user.username %></i></a>
+                </h6>
+                <p class="card-text">
+                    <%= comment.text %>
+                </p>
+                <!-- If comment by current user allow deletion -->
+                <% if (currentUser && comment.user.equals(currentUser._id)) { %>
+                <form action="/reviews/<%=review._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-delete btn-sm text-light">Delete</button>
+                </form>
+                <% } %>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>

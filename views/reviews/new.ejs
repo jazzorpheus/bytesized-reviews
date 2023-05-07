@@ -1,0 +1,73 @@
+<!-- Tells ejs-mate to put the following EJS/HTML into the 'body' of our boilerplate.ejs file -->
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/starability.css">
+
+<div class="row">
+    <h1 class="text-center mb-4">New Review</h1>
+    <div class="col-6 offset-3">
+        <form class="needs-validation" action="/reviews" method="POST" enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="title">Book Title:</label>
+                <input class="form-control" type="text" name="review[title]" id="title" maxlength="285" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="author">Book Author:</label>
+                <input class="form-control" type="text" name="review[author]" id="author" maxlength="100" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <fieldset class="starability-growRotate mb-3">
+                <legend>Rating:</legend>
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked />
+                <input type="radio" id="first-rate1" name="rating" value="1" />
+                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+                <input type="radio" id="first-rate6" name="review[rating]" value="6" />
+                <label for="first-rate6" title="Amazing">6 stars</label>
+                <input type="radio" id="first-rate7" name="review[rating]" value="7" />
+                <label for="first-rate7" title="Amazing">7 stars</label>
+                <input type="radio" id="first-rate8" name="review[rating]" value="8" />
+                <label for="first-rate8" title="Amazing">8 stars</label>
+                <input type="radio" id="first-rate9" name="review[rating]" value="9" />
+                <label for="first-rate9" title="Amazing">9 stars</label>
+                <input type="radio" id="first-rate10" name="review[rating]" value="10" />
+                <label for="first-rate10" title="Amazing">10 stars</label>
+            </fieldset>
+            <div class="mb-3">
+                <label class="form-label" for="heading">One sentence summarizing your thoughts on the book (review
+                    title):</label>
+                <input class="form-control" type="text" name="review[heading]" id="heading" maxlength="285" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="text">Write a short review:</label>
+                <textarea class="form-control" name="review[text]" id="text" rows="7" maxlength="2000"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Add Image:</label>
+                <input class="form-control" type="file" name="image" id="image">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-register text-light">Publish Review!</button>
+            </div>
+        </form>
+    </div>
+</div>

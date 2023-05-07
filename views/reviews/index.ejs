@@ -1,0 +1,55 @@
+<!-- Tells ejs-mate to put the following EJS/HTML into the 'body' of our boilerplate.ejs file -->
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/starability.css">
+<script src="https://kit.fontawesome.com/aaceba988e.js" crossorigin="anonymous"></script>
+
+<h1 class="index-title text-center mt-3 mb-4">
+    <% if (!userId) { %>
+    Check out some recent reviews!
+    <% } else { %>
+    Reviews by
+    <i>
+        <b><%= reviews[0].user.username %></b>
+    </i>
+    <% } %>
+</h1>
+
+<div class="d-grid gap-2 col-8 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mx-auto mb-5">
+    <a class="btn btn-create btn-lg" href="/reviews/new">Add New Review</a>
+</div>
+
+<% for (let i = reviews.length - 1; i > -1; i--) { %>
+<div class="reviewCard card mb-5">
+    <div class="row">
+        <div class="col-lg-4 d-flex justify-content-center align-items-center">
+            <img class="indexImage img-fluid h-75" src="<%= reviews[i].image.url %>" alt="image of book"
+                crossorigin="anonymous">
+        </div>
+        <div class="col-lg-7">
+            <div class="card-body">
+                <h5 class="card-header mb-3">
+                    <i>
+                        <%= reviews[i].title %>
+                    </i>
+                    by <%= reviews[i].author %>
+                </h5>
+
+                <p class="starability-result" data-rating="<%=reviews[i].rating%>"></p>
+
+                <p class="card-text">
+                    Review by
+                    <a class="userLink" href="/reviews/user/<%=reviews[i].user._id%>">
+                        <i><b><%= reviews[i].user.username %></b></i></a>:
+                    <b>"<%=reviews[i].heading%>"</b>
+                </p>
+                <p class="card-text review-sample">
+                    <%= reviews[i].text.split(' ').slice(0,75).join(' ') %>...
+                </p>
+                <a href="/reviews/<%=reviews[i]._id%>" class="btn btn-read link-light">
+                    Read more &nbsp;<i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
