@@ -1,11 +1,11 @@
 body {
   height: 100vh;
-  background: rgba(0, 0, 72, 255) repeat;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed !important;
   text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.8);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
   font-family: "Lora", serif;
@@ -14,15 +14,6 @@ body {
 
 .home-nav {
   max-width: 70vw;
-}
-
-@media (max-width: 520px) {
-  .home-nav {
-    margin: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    width: 100vw !important;
-  }
 }
 
 .nav-link {
@@ -60,6 +51,11 @@ body {
   background-color: #95234b;
   box-shadow: 0.3rem 0.3rem 0.3rem 0rem #320b19;
 }
+.btn:active {
+  color: rgba(255, 255, 255, 1) !important;
+  background-color: #95234b !important;
+  box-shadow: 0.3rem 0.3rem 0.3rem 0rem #320b19 !important;
+}
 
 .lead {
   font-weight: 400;
@@ -67,4 +63,25 @@ body {
 
 .fa-plus {
   font-size: 0.9rem;
+}
+
+@media (max-width: 520px) {
+  .home-nav {
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100vw !important;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  .home-info {
+    padding: 0 !important;
+  }
+  .lead {
+    font-size: 0.9rem;
+  }
+  .home-btn {
+    font-size: 1rem !important;
+  }
 }
