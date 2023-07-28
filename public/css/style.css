@@ -70,7 +70,7 @@ body {
 /* *********************************************************************************    BUTTONS */
 
 .btn-create {
-  background-color: rgba(0, 224, 116, 0.8);
+  background-color: rgba(0, 224, 116, 0.6);
   box-shadow: -0.05rem -0.05rem 0.3rem 0rem #00522a;
   font-size: 1.25rem;
   color: rgba(0, 0, 0, 0.8);
