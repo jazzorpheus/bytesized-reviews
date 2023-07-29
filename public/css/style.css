@@ -153,6 +153,20 @@ body {
   border: solid rgba(0, 0, 0, 0.6) 2px !important;
 }
 
+@media (max-width: 400px) {
+  .btn-delete,
+  .btn-edit {
+    padding: 0;
+  }
+}
+
+@media (max-width: 312px) {
+  .btn-delete,
+  .btn-edit {
+    font-size: 0.85rem;
+  }
+}
+
 .btn-read {
   border: solid rgba(255, 255, 255, 0.6) 1.5px;
   background-color: #7f1734;
