@@ -160,7 +160,7 @@ body {
   }
 }
 
-@media (max-width: 312px) {
+@media (max-width: 330px) {
   .btn-delete,
   .btn-edit {
     font-size: 0.85rem;
